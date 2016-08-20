@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="aladdin hybrid framework" />
+  <meta name="keywords" content="aladdin hybrid framework ios android webview" />
+  <meta name="author" content="aladdin, aladdin.com" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+  <title>Aladdin upgrade example</title>
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">首页</h3>
+    </div>
+    <div class="panel-body">
+      <ul id="basic" class="list-group">
+        <button type="button" class="list-group-item" data-title="explorer">explorer 离线包</button>
+        <button type="button" class="list-group-item" data-title="carpool">carpool 进入时更新 </button>
+        <button type="button" class="list-group-item" data-title="ranking">ranking 在线包</button>
+      </ul>
+    </div>
+  </div>
+
+  <script src="./zepto.min.js"></script>
+  <script src="./touch.min.js"></script>
+  <script src="./aladdin.min.js"></script>
+  <script type="text/javascript">
+    $("#basic").on("tap", "button", function() {
+      // 定义平台适配器
+      var title = $(this).attr("data-title");
+      if (title === 'explorer') {
+        aladdin.navigator.forward({
+          title: title,
+          url: '/explorer/index.html',
+          type: 'webapp'
+        });
+      } else if (title === 'carpool') {
+        aladdin.navigator.forward({
+          title: title,
+          url: '/carpool/index.html',
+          type: 'webapp'
+        });
+      } else if (title === 'ranking') {
+        aladdin.navigator.forward({
+          title: title,
+          url: '/ranking/index.html',
+          type: 'webapp'
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
